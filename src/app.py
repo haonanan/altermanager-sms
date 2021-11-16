@@ -52,7 +52,7 @@ def call_sms_api(phone, context):
             "scorpid": "",
             "sprdid": config_dict['sms']['sprdid'],
             "sdst": phone,
-            "smsg": "【天府通】" + context
+            "smsg": "【】" + context
         }
         #数据准备
         data = urllib.parse.urlencode(param).encode(encoding='UTF8')
