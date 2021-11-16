@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "alertmanager-sms.fullname" . }}
+  {{ include "alertmanager-sms.namespace" . }}
+  labels:
+    {{ include  "alertmanager-sms.servicelabels" . }}
+spec:
+  ports:
+    - name: {{ include "alertmanager-sms.fullname" . }}
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: {{ .Values.service.targetPort }}
+  selector:
+    {{- include "alertmanager-sms.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.service.type }}

@@ -1,0 +1,18 @@
+prod_cfg: true
+test:
+  testgroup: 
+prod:
+  #所有短信默认发送到operator分组,所有电话需要已列表的形式存在
+  operator:
+   - 
+   - 
+   #附加分组可自定义
+  #welfare:
+  #- 15532115053
+sms:
+  api_url: 
+  account: 
+  password: 
+  scorpid: ''
+  sprdid: 
+  smssign: ""

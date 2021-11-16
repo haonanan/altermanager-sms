@@ -1,0 +1,13 @@
+FROM python:3.8-alpine
+ENV  REQUIR_DIR=/opt/python/requirements  CODE_DIR=/opt/python/alertmanager-sms  CONFIG_DIR=/opt/python/config 
+COPY requirements.txt            $REQUIR_DIR/
+COPY ./config/*                  $CONFIG_DIR/
+COPY ./alertmanager-sms/*        $CODE_DIR/
+RUN adduser -D pyruner && chown -R pyruner.pyruner  /opt/python
+USER pyruner
+ENV PATH="/home/pyruner/.local/bin:${PATH}"
+WORKDIR $REQUIR_DIR
+RUN  /bin/sh -c  'pip3  install  -r requirements.txt   -i http://mirrors.aliyun.com/pypi/simple/   --trusted-host mirrors.aliyun.com'
+WORKDIR $CODE_DIR
+EXPOSE 5001
+CMD python3  app.py

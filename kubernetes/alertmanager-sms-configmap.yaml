@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-sms-config
+  namespace: monitoring
+  labels:
+    k8s-app: alertmanager-sms-config
+data:
+  config.yaml: |
+    prod_cfg: true
+    test:
+      testgroup: 
+    prod:
+      #所有短信默认发送到operator分组,所有电话需要已列表的形式存在
+      operator: ["",""]
+      #附加分组可自定义, <key:namespace>:<value:phonenumber>
+      #: [""]
+    sms:
+      api_url: 
+      account: 
+      password: 
+      scorpid: ''
+      sprdid: 
+      smssign: "【】"
